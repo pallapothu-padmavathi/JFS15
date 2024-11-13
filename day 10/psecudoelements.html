@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h1{
+        font-size:larger;
+        color:brown
+    }
+    h1::after{
+        content: "$";
+        color:cadetblue;
+    }
+    h1::before{
+        content:"$";
+        color:chartreuse;
+    }
+    h1::first-letter{
+       
+        color:blue;
+    }
+    h1::first-line{
+     
+        color:black;
+    }
+    h2::selection{
+        content:" padhu"; 
+        color:red;
+    }
+</style>
+<body>
+    <h1> world</h1>
+    <h2> padhu</h2>
+    
+</body>
+</html>
