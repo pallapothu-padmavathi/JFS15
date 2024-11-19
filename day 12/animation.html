@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            position: relative;
+            animation-duration: 2s;
+          animation-name: move-and-rotate;
+          background-color: blueviolet;
+         
+        }
+        @keyframes  move-and-rotate{
+          0% { left:0px;transform:rotate(180deg);}
+          50%{left:100px;transform:rotate(180deg);}
+          100%{left:200px; trasform:rotate(360deg);}
+        }
+        
+         
+        
+    </style>
+    </head>
+    <body>
+        <div class="box"></div>
+        <style>
+          .box{
+
+        
+           width: 100px;
+            height: 100px;
+            position: relative;
+            animation-duration: 2s;
+          animation-name: bounce;
+          background-color: pink;
+          }
+          @keyframes bounce{
+            0%{top:0;}
+            50%{top:150px;}
+            100%{top:0;}
+          }
+          </style>
+          </head>
+          <body>
+            <div class="box"></div>
+    
+
+    
+</body>
+</html>
