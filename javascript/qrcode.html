@@ -1,0 +1,130 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        header h1 {
+            color: #333;
+        }
+
+        main {
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            margin-bottom: 10px;
+            border: 1px solid pink;
+            border-radius: 5px;
+        }
+
+        select {
+            padding: 10px;
+            border: 1px solid blueviolet;
+            border-radius: 5px;
+        }
+
+        button {
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:disabled {
+            background-color: yellowgreen;
+            cursor: not-allowed;
+        }
+
+        #qrCodeWrapper {
+            margin-top: 20px;
+            display: inline-block;
+            background-color: #f0f8ff; /* Light blue background */
+            padding: 20px; /* Padding around the QR code */
+            border-radius: 10px; /* Rounded corners for background */
+        }
+
+        #qrCode {
+            padding: 10px;
+            border: 1px solid blue;
+            display: inline-block;
+            background-color: whitesmoke; /* QR code background color */
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Generate QR Code</h1>
+    </header>
+
+    <main>
+        <p>Enter text and select size to generate a QR code:</p>
+        <input type="text" id="qrText" placeholder="Enter text for QR code">
+        <br><br>
+        <select id="qrSize">
+            <option value="100">100 x 100</option>
+            <option value="200">200 x 200</option>
+            <option value="300">300 x 300</option>
+        </select>
+        <br><br>
+        <div id="qrCodeWrapper">
+            <div id="qrCode"></div>
+        </div>
+        <br>
+        <button id="generateBtn">Generate</button>
+        <button id="downloadBtn" disabled>Download</button>
+    </main>
+
+    <script>
+        document.getElementById("generateBtn").addEventListener("click", function () {
+            const text = document.getElementById("qrText").value;
+            const size = parseInt(document.getElementById("qrSize").value);
+            const qrCodeContainer = document.getElementById("qrCode");
+
+            if (!text) {
+                alert("Please enter text to generate a QR code.");
+                return;
+            }
+
+            // Clear any existing QR code
+            qrCodeContainer.innerHTML = "";
+
+            // Generate the QR code
+            new QRCode(qrCodeContainer, {
+                text: text,
+                width: size,
+                height: size,
+            });
+
+            // Enable the download button
+            document.getElementById("downloadBtn").disabled = false;
+        });
+
+        document.getElementById("downloadBtn").addEventListener("click", function () {
+            const qrCodeContainer = document.getElementById("qrCode").querySelector("img");
+            const link = document.createElement("a");
+            link.download = "qr-code.png";
+            link.href = qrCodeContainer.src;
+            link.click();
+        });
+    </script>
+</body>
+</html>
